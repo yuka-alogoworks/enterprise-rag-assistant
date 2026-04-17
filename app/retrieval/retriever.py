@@ -23,7 +23,7 @@ def retrieve_documents(question: str) -> list[dict]:
     distances = result.get("distances", [[]])[0]
 
     docs = []
-    for doc, metadata, distance in zip(documents, metadatas, distances):
+    for doc, metadata, distance in zip(documents, metadatas, distances, strict=False):
         if distance is not None and distance > settings.min_distance:
             continue
         docs.append(

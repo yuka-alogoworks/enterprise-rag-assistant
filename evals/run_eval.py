@@ -6,7 +6,8 @@ from app.services.answer_service import answer_question
 
 def main():
     path = Path("evals/goldens.jsonl")
-    rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    content = path.read_text(encoding="utf-8").splitlines()
+    rows = [json.loads(line) for line in content if line.strip()]
 
     results = []
     for row in rows:
@@ -32,10 +33,12 @@ def main():
         )
 
     passed = sum(
-        1 for r in results
+        1
+        for r in results
         if r["answer_non_empty"] and r["must_contain_ok"] and r["source_ok"]
     )
-    print(json.dumps({"total": len(results), "passed": passed, "results": results}, ensure_ascii=False, indent=2))
+    summary = {"total": len(results), "passed": passed, "results": results}
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":

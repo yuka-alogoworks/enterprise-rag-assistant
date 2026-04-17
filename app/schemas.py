@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from pydantic import BaseModel, Field
 
 
@@ -8,7 +6,7 @@ class Citation(BaseModel):
     title: str
     source: str
     snippet: str
-    score: Optional[float] = None
+    score: float | None = None
 
 
 class ChatRequest(BaseModel):
@@ -18,7 +16,7 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     answer: str
-    citations: List[Citation] = []
+    citations: list[Citation] = Field(default_factory=list)
     used_context: bool = False
 
 
