@@ -1,0 +1,3 @@
+{"question":"有給休暇の申請期限は？","must_contain":"3営業日前","expected_source":"policy.md"}
+{"question":"立替精算はいつまでに申請する？","must_contain":"30日以内","expected_source":"faq.md"}
+{"question":"社外秘資料を個人ブログに書いてよい？","must_contain":"根拠が見つかりません","expected_source":""}
